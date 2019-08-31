@@ -1,27 +1,28 @@
 package br.com.studies.cursomc.resources;
 
-import br.com.studies.cursomc.domanin.Categoria;
+import br.com.studies.cursomc.service.CategoriaService;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.ArrayList;
-import java.util.List;
+import javax.websocket.server.PathParam;
 
 @RestController
-@RequestMapping(value = "/categorias")
+@RequestMapping(value = "/categoria")
 public class CategoriaResources {
 
-    @GetMapping
-    public List<Categoria> listar(){
-        Categoria categoria1 = new Categoria(1, "Informática");
-        Categoria categoria2 = new Categoria(2, "Ëscritório");
+    private final CategoriaService categoriaService;
 
-        List<Categoria> categorias = new ArrayList<>();
-        categorias.add(categoria1);
-        categorias.add(categoria2);
+    public CategoriaResources(CategoriaService categoriaService) {
+        this.categoriaService = categoriaService;
+    }
 
-        return categorias;
+
+    @GetMapping(value = "/{id}")
+    public ResponseEntity<?> buscar(@PathVariable("id") Integer id){
+        return ResponseEntity.ok().body(categoriaService.buscar(id));
     }
 
 }
