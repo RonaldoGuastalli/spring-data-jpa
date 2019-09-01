@@ -31,7 +31,7 @@ public class CursomcApplication implements CommandLineRunner {
         Categoria cat2 = Categoria.builder().id(null).nome("Escritório").build();
 
         Produto p1 = Produto.builder().id(null).nome("Computador").preco(2000.00).build();
-        Produto p2 = Produto.builder().id(null).nome("Impressora").preco(80.00).build();
+        Produto p2 = Produto.builder().id(null).nome("Impressora").preco(800.00).build();
         Produto p3 = Produto.builder().id(null).nome("Mouse").preco(80.00).build();
 
         cat1.getProdutos().addAll(Arrays.asList(p1, p2, p3));
