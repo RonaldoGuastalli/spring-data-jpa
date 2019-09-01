@@ -24,7 +24,7 @@ public class Categoria implements Serializable {
 
     private String nome;
 
-    @ManyToMany(mappedBy = "categorias", fetch = FetchType.EAGER)
+    @ManyToMany(mappedBy = "categorias")
     @Builder.Default
     private List<Produto> produtos = new ArrayList<>();
 }

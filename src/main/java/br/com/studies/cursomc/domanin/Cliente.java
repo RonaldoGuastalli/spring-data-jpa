@@ -30,7 +30,7 @@ public class Cliente implements Serializable {
     // Salvar um numero no BD (getCod()), não uma stirng.
     private Integer tipo;
 
-    @OneToMany(mappedBy = "cliente")
+    @OneToMany(mappedBy = "cliente", fetch = FetchType.EAGER)
     @Builder.Default
     private List<Endereco> enderecos = new ArrayList<>();
 
@@ -38,7 +38,7 @@ public class Cliente implements Serializable {
     * Mapeamento de telefone, porem sem que a entidade telefone exista.
     * A tabela TELEFON será criada, relacionando o id do cliente e o número(string) do telefone.
     * */
-    @ElementCollection
+    @ElementCollection(fetch = FetchType.EAGER)
     @CollectionTable(name = "TELEFONE")
     @Builder.Default
     private Set<String> telefones = new HashSet<>();
