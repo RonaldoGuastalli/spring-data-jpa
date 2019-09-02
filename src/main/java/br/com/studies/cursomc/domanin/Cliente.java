@@ -43,6 +43,10 @@ public class Cliente implements Serializable {
     @Builder.Default
     private Set<String> telefones = new HashSet<>();
 
+    @OneToMany(mappedBy = "cliente")
+    @Builder.Default
+    private List<Pedido> pedidos = new ArrayList<>();
+
     public TipoCliente getTipo(){
         return TipoCliente.toEnum(tipo);
     }
