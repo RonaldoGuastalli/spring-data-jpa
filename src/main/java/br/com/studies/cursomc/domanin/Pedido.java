@@ -4,7 +4,7 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.Date;
+import java.util.*;
 
 @Entity
 @Builder
@@ -31,5 +31,17 @@ public class Pedido implements Serializable {
 
     @OneToOne(cascade = CascadeType.ALL, mappedBy = "pedido")
     private Pagamento pagamento;
+
+    @OneToMany(mappedBy = "id.pedido")
+    @Builder.Default
+    private Set<ItemPedido> itens = new HashSet<>();
+
+    public List<Produto> getProdutos(){
+        List<Produto> produtos = new ArrayList<>();
+        for (ItemPedido itemPedido : itens){
+            produtos.add(itemPedido.getProduto());
+        }
+        return produtos;
+    }
 
 }
