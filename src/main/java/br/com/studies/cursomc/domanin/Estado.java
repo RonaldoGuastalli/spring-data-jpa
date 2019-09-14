@@ -24,8 +24,8 @@ public class Estado implements Serializable {
     private Integer id;
     private String nome;
 
-    @OneToMany(mappedBy = "estado", fetch = FetchType.EAGER)
-    @Builder.Default
     @JsonIgnore
+    @OneToMany(mappedBy = "estado")
+    @Builder.Default
     private List<Cidade> cidades = new ArrayList<>();
 }

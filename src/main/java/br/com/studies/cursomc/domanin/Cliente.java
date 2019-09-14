@@ -1,6 +1,7 @@
 package br.com.studies.cursomc.domanin;
 
 import br.com.studies.cursomc.domanin.enums.TipoCliente;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.persistence.*;
@@ -43,6 +44,7 @@ public class Cliente implements Serializable {
     @Builder.Default
     private Set<String> telefones = new HashSet<>();
 
+    @JsonIgnore
     @OneToMany(mappedBy = "cliente")
     @Builder.Default
     private List<Pedido> pedidos = new ArrayList<>();

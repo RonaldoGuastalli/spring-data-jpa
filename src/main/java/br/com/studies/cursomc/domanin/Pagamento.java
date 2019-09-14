@@ -1,6 +1,7 @@
 package br.com.studies.cursomc.domanin;
 
 import br.com.studies.cursomc.domanin.enums.EstadoPagamento;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.persistence.*;
@@ -20,6 +21,7 @@ public abstract class Pagamento implements Serializable {
     private Integer id;
     private Integer estado;
 
+    @JsonIgnore
     @OneToOne
     @JoinColumn(name = "pedido_id")
     @MapsId // Mesmo id do pedido

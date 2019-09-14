@@ -1,5 +1,6 @@
 package br.com.studies.cursomc.domanin;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.*;
 
 import javax.persistence.*;
@@ -19,6 +20,8 @@ public class Pedido implements Serializable {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Integer id;
+
+    @JsonFormat(pattern="dd/MM/yyyy HH:mm")
     private Date instante;
 
     @ManyToOne(fetch = FetchType.EAGER)
@@ -29,10 +32,10 @@ public class Pedido implements Serializable {
     @JoinColumn(name = "endereco_de_entrega_id")
     private Endereco enderecoDeEntrega;
 
-    @OneToOne(cascade = CascadeType.ALL, mappedBy = "pedido")
+    @OneToOne(cascade = CascadeType.ALL, mappedBy = "pedido", fetch = FetchType.EAGER)
     private Pagamento pagamento;
 
-    @OneToMany(mappedBy = "id.pedido")
+    @OneToMany(mappedBy = "id.pedido", fetch = FetchType.EAGER)
     @Builder.Default
     private Set<ItemPedido> itens = new HashSet<>();
 

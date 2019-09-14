@@ -38,11 +38,13 @@ public class Produto implements Serializable {
     @Builder.Default
     private List<Categoria> categorias = new ArrayList<>();
 
+    @JsonIgnore
     @OneToMany(mappedBy = "id.produto")
     @Builder.Default
     private Set<ItemPedido> itens = new HashSet<>();
 
     // Listar os pedidos do produto
+    @JsonIgnore
     public List<Pedido> getPedidos(){
         List<Pedido> pedidos = new ArrayList<>();
         for(ItemPedido itemPedido : itens){
