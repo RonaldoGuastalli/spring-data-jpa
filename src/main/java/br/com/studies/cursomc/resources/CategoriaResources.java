@@ -1,12 +1,15 @@
 package br.com.studies.cursomc.resources;
 
 import br.com.studies.cursomc.domanin.Categoria;
+import br.com.studies.cursomc.dto.CategoriaDTO;
 import br.com.studies.cursomc.service.CategoriaService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.net.URI;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping(value = "/categoria")
@@ -20,7 +23,7 @@ public class CategoriaResources {
 
 
     @GetMapping(value = "/{id}")
-    public ResponseEntity<Categoria> buscar(@PathVariable("id") Integer id){
+    public ResponseEntity<Categoria> find(@PathVariable("id") Integer id){
         return ResponseEntity.ok().body(categoriaService.find(id));
     }
 
@@ -43,6 +46,13 @@ public class CategoriaResources {
     public ResponseEntity<Void> delete(@PathVariable("id") Integer id){
         categoriaService.delete(id);
         return ResponseEntity.noContent().build();
+    }
+
+    @GetMapping
+    public ResponseEntity<List<CategoriaDTO>> findAll(){
+        List<Categoria> categorias = categoriaService.findAll();
+        List<CategoriaDTO> categoriasDTOS = categorias.stream().map(categoria -> new CategoriaDTO(categoria)).collect(Collectors.toList());
+        return ResponseEntity.ok().body(categoriasDTOS);
     }
 
 }
