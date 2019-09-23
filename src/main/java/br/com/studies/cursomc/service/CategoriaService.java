@@ -1,6 +1,7 @@
 package br.com.studies.cursomc.service;
 
 import br.com.studies.cursomc.domanin.Categoria;
+import br.com.studies.cursomc.dto.CategoriaDTO;
 import br.com.studies.cursomc.repository.CategoriaRepository;
 import br.com.studies.cursomc.resources.exception.DataIntegrityException;
 import br.com.studies.cursomc.resources.exception.ObjectNotFoundException;
@@ -53,5 +54,13 @@ public class CategoriaService {
     public Page<Categoria> findPage(Integer page, Integer linesPerPage, String orderBy, String direction){
         PageRequest pageRequest = PageRequest.of(page, linesPerPage, Sort.Direction.valueOf(direction), orderBy);
         return categoriaRepository.findAll(pageRequest);
+    }
+
+    //TODO: alterar para um mapper
+    public Categoria fromDTO(CategoriaDTO categoriaDTO) {
+        return Categoria.builder()
+                .id(categoriaDTO.getId())
+                .nome(categoriaDTO.getNome())
+                .build();
     }
 }
