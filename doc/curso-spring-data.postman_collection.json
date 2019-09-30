@@ -225,6 +225,57 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "update cliente",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"nome\": \"Maria Silva da Luz\",\n\t\"email\": \"maria@gmail.com.br\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:9000/cliente/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9000",
+							"path": [
+								"cliente",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete cliente",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:9000/cliente/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9000",
+							"path": [
+								"cliente",
+								"1"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		}
