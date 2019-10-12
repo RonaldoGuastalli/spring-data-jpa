@@ -10,6 +10,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -28,6 +29,7 @@ public class CategoriaService {
         ));
     }
 
+    @Transactional
     public Categoria insert(Categoria categoria) {
         categoria.setId(null);
         return categoriaRepository.save(categoria);
