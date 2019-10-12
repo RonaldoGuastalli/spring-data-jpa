@@ -7,11 +7,10 @@ import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
+@Data
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@Getter
-@Setter
 @EqualsAndHashCode(of = {"id"})
 public class Endereco implements Serializable {
 

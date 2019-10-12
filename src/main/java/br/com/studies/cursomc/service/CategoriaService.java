@@ -5,6 +5,7 @@ import br.com.studies.cursomc.dto.CategoriaDTO;
 import br.com.studies.cursomc.repository.CategoriaRepository;
 import br.com.studies.cursomc.resources.exception.DataIntegrityException;
 import br.com.studies.cursomc.resources.exception.ObjectNotFoundException;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -17,11 +18,8 @@ import java.util.List;
 @Service
 public class CategoriaService {
 
-    private final CategoriaRepository categoriaRepository;
-
-    public CategoriaService(CategoriaRepository categoriaRepository) {
-        this.categoriaRepository = categoriaRepository;
-    }
+    @Autowired
+    private CategoriaRepository categoriaRepository;
 
     public Categoria find(Integer id) {
         return categoriaRepository.findById(id).orElseThrow(() -> new ObjectNotFoundException(
