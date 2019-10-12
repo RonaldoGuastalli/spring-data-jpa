@@ -51,7 +51,7 @@ public class ClienteService {
         try{
             clienteRepository.deleteById(id);
         }catch (DataIntegrityViolationException e){
-            throw new DataIntegrityException("Não é possível excluir uma cliente que possui entidades relacinadas");
+            throw new DataIntegrityException("Não é possível excluir uma cliente que possui pedidos relacinados");
         }
     }
 

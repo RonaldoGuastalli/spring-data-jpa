@@ -30,7 +30,7 @@ public class Cliente implements Serializable {
     // Salvar um numero no BD (getCod()), não uma stirng.
     private Integer tipo;
 
-    @OneToMany(mappedBy = "cliente", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "cliente", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @Builder.Default
     private List<Endereco> enderecos = new ArrayList<>();
 
